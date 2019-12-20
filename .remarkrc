@@ -1,0 +1,3 @@
+{
+  "plugins": ["remark-frontmatter", "remark-preset-lint-node"]
+}

@@ -1,13 +1,11 @@
-console.log('Test Server')
+'use strict'
 
-function component () {
-  const element = document.createElement('div')
+import React from 'react'
 
-  // Lodash, currently included via a script, is required for this line to work
-  // eslint-disable-next-line no-undef
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ')
-
-  return element
+class Title extends React.Component {
+  render () {
+    return React.createElement('h1', null, 'Hello From React')
+  }
 }
 
-document.body.appendChild(component())
+export default Title

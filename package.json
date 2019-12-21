@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A ReactJs BoilerPlate",
   "scripts": {
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server",
     "wbundle": "webpack",
     "autofix:html": "eslint . --ext html --fix --config=.eslintrc.json",
     "autofix:md": "eslint . --ext md --fix --config=.eslintrc.json && remark . -qfo --rc-path=.remarkrc",
@@ -19,10 +19,17 @@
   "author": "Saulo Nunes",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
     "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "clean-webpack-plugin": "^3.0.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-config-standard-react": "^9.2.0",

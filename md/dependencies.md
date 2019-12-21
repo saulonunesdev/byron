@@ -13,6 +13,7 @@
 
 * [CleanWebpackPlugin](https://www.npmjs.com/package/clean-webpack-plugin)
 * [WebPack DevServer](https://webpack.js.org/configuration/dev-server/)
+* [Browser-Sync](https://www.browsersync.io/)
 * [Babel](https://babeljs.io/)
 
 ## Style Guide, Linter, and Formatter for Npm Test

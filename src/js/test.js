@@ -1,1 +1,1 @@
-console.log('JS TEST')
+console.log('JS Browser Sync TEST')

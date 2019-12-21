@@ -2,5 +2,5 @@
   "root": true,
   "parser": "babel-eslint",
   "extends": ["standard", "standard-react"],
-  "plugins": ["markdown"]
+  "plugins": ["markdown", "html"]
 }

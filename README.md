@@ -1,10 +1,9 @@
 # React JS BoilerPlate
 
-* * *
+> A React JS BoilerPlate With Code Linter Validation Check the Dependencies [List](md/dependencies.md)
 
-> [![js-standard-style](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
-
-* * *
+[![License][license-image]][license-url]
+[![js-standard-style][standard-image]][standard-url]
 
 ## Commands
 
@@ -12,37 +11,17 @@
 npm install     #Install Dependencies
 npm test        #Tests Everything
 npm run autofix #Fix Everything (Remark Not Working 100%)
+npm run wbundle #Generate WebPack Bundle
 ```
 
-```js
-var x
-console.log(x)
-```
+## Wiki
 
-## Dependencies
+_To be Created_
 
-* [ReactJs](https://reactjs.org/)
+[license-image]: https://img.shields.io/github/license/SauloNunes/reactjs-boilerplate
 
-> Bundler
+[license-url]: https://github.com/SauloNunes/reactjs-boilerplate/blob/master/LICENSE
 
-* [Webpack](https://webpack.js.org/)
-* [Babel](https://babeljs.io/)
+[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
 
-> Style Guide, Linter, and Formatter for Npm Test
-
-* [ESLint](https://eslint.org/)
-* [StandardJS](https://standardjs.com/)
-* [Remark-Lint](https://www.npmjs.com/package/remark-lint)
-* [MarkdownLint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
-
-> Tests Code Before Git Commit and Push
-
-* [Husky](https://www.npmjs.com/package/husky)
-
-> Tests Code on Staged Files Only
-
-* [Lint-Staged](https://www.npmjs.com/package/lint-staged)
-
-> Simplify Npm Run Scripts
-
-* [Npm-Run-All](https://www.npmjs.com/package/npm-run-all)
+[standard-url]: https://github.com/standard/standard

@@ -12,7 +12,6 @@ module.exports = {
   mode: devMode ? 'development' : 'production',
   entry: {
     index: path.join(__dirname, 'src', 'index.js'),
-    // app: path.join(__dirname, 'src', 'js', 'app.js'),
     test: path.join(__dirname, 'src', 'js', 'test.js')
   },
   output: {
@@ -24,11 +23,13 @@ module.exports = {
     children: false
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    publicPath: '/static/',
+    hot: devMode
   },
   module: {
     rules: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }
+      { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'] }
     ]
   },
   plugins: [
@@ -58,7 +59,7 @@ module.exports = {
       {
         host: '192.168.15.11',
         port: 3000,
-        proxy: 'http://localhost:8080/'
+        proxy: 'http://localhost:8080/static/'
       },
       {
         reload: false

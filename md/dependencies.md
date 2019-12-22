@@ -12,9 +12,22 @@
 > Clean ```dist/``` directory before bundle
 
 * [CleanWebpackPlugin](https://www.npmjs.com/package/clean-webpack-plugin)
+
+> Run Dinamyc Server on RAM with Hot Reload
+
 * [WebPack DevServer](https://webpack.js.org/configuration/dev-server/)
+
+> Sync All Browser on port 3000
+
 * [Browser-Sync](https://www.browsersync.io/)
+
+> Transform ES6+ for Browser Compatibility
+
 * [Babel](https://babeljs.io/)
+
+> Enables React Hot Loader
+
+* [React Hot Loader](http://gaearon.github.io/react-hot-loader/)
 
 ## Style Guide, Linter, and Formatter for Npm Test
 

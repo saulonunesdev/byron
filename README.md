@@ -9,6 +9,7 @@
 
 ```sh
 npm install     #Install Dependencies
+npm start       #Starts WebPack DevServer With HotReload and BrowserSync
 npm test        #Tests Everything
 npm run autofix #Fix Everything (Remark Not Working 100%)
 npm run wbundle #Generate WebPack Bundle

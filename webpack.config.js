@@ -5,14 +5,15 @@ const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   mode: devMode ? 'development' : 'production',
   entry: {
-    index: path.join(__dirname, 'src', 'index.js'),
-    test: path.join(__dirname, 'src', 'js', 'test.js')
+    index: path.join(__dirname, 'src', 'js', 'index.js'),
+    other: path.join(__dirname, 'src', 'js', 'other.js')
   },
   output: {
     filename: '[name].bundle.js',
@@ -27,8 +28,38 @@ module.exports = {
     publicPath: '/static/',
     hot: devMode
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    }
+  },
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          { loader: 'css-loader', options: { sourceMap: devMode } },
+          { loader: 'postcss-loader', options: { sourceMap: devMode } }
+        ]
+      },
+      {
+        test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
+        loader: 'file-loader?name=[name].[ext]'
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
+      },
       { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'] }
     ]
   },
@@ -45,15 +76,19 @@ module.exports = {
     new CleanWebpackPlugin({
       verbose: true
     }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.join(__dirname, 'src', 'views', 'app.html'),
-      chunks: ['index']
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
     }),
     new HtmlWebpackPlugin({
-      filename: 'test.html',
-      template: path.join(__dirname, 'src', 'views', 'test.html'),
-      chunks: ['test']
+      filename: 'index.html',
+      template: path.join(__dirname, 'src', 'views', 'index.html'),
+      chunks: ['index', 'styles']
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'other.html',
+      template: path.join(__dirname, 'src', 'views', 'other.html'),
+      chunks: ['other', 'styles']
     }),
     new BrowserSyncPlugin(
       {
@@ -62,7 +97,7 @@ module.exports = {
         proxy: 'http://localhost:8080/static/'
       },
       {
-        reload: false
+        reload: true
       }
     )
   ]

@@ -8,6 +8,7 @@
 ## WebPack Bundler
 
 * [Webpack](https://webpack.js.org/)
+* [Svg Inline Loader](https://www.npmjs.com/package/svg-inline-loader)
 
 > Clean ```dist/``` directory before bundle
 

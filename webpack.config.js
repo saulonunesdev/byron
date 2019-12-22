@@ -6,6 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const StylelintPlugin = require('stylelint-webpack-plugin')
 const path = require('path')
 const devMode = process.env.NODE_ENV !== 'production'
 
@@ -60,7 +61,17 @@ module.exports = {
         test: /\.svg$/,
         loader: 'svg-inline-loader'
       },
-      { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'] }
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        enforce: 'pre',
+        loaders: ['eslint-loader', 'standard-loader']
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      }
     ]
   },
   plugins: [
@@ -79,6 +90,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css'
+    }),
+    new StylelintPlugin({
+      context: 'src/css',
+      files: '*.css'
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',

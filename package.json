@@ -7,12 +7,14 @@
     "wbundle": "webpack",
     "autofix:html": "eslint . --ext html --fix --config=.eslintrc.json",
     "autofix:md": "eslint . --ext md --fix --config=.eslintrc.json && remark . -qfo --rc-path=.remarkrc",
+    "autofix:css": "stylelint \"src/css/**/*.css\" --fix",
     "autofix:eslint": "eslint . --fix --config=.eslintrc.json  && standard --fix",
     "autofix": "npm-run-all --parallel autofix:*",
     "test": "npm-run-all test:lint",
     "test:lint": "npm-run-all --parallel test:lint:*",
     "test:lint:js": "eslint . --config=.eslintrc.json",
     "test:lint:md": "remark -qf . && eslint . --ext md --config=.eslintrc.json",
+    "test:lint:css": "stylelint \"src/css/**/*.css\"",
     "test:lint:html": "eslint . --ext html --config=.eslintrc.json",
     "test:lint:lockfile": "lockfile-lint --allowed-hosts npm github.com --validate-https --type npm --path package-lock.json"
   },
@@ -62,6 +64,8 @@
     "rucksack-css": "^1.0.2",
     "standard": "^14.3.1",
     "style-loader": "^1.1.1",
+    "stylelint": "^12.0.0",
+    "stylelint-config-twbs-bootstrap": "^1.0.0",
     "svg-inline-loader": "^0.8.0",
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10",
@@ -79,6 +83,10 @@
     "*.{html}": [
       "npm run test:lint:html",
       "git add"
+    ],
+    "*.{css}": [
+      "npm run test:lint:css",
+      "git add"
     ]
   },
   "husky": {
@@ -90,6 +98,18 @@
   "standard": {
     "ignore": [
       "/dist/"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   }
 }

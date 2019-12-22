@@ -115,7 +115,7 @@ module.exports = {
         proxy: 'http://localhost:8080/static/'
       },
       {
-        reload: true
+        reload: false
       }
     )
   ]

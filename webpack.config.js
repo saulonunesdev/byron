@@ -22,7 +22,10 @@ module.exports = {
   },
   devtool: devMode ? 'inline-source-map' : false,
   stats: {
-    children: false
+    children: false,
+    logging: 'verbose',
+    outputPath: true,
+    performance: true
   },
   devServer: {
     contentBase: './dist',
@@ -80,8 +83,8 @@ module.exports = {
       modules: true,
       modulesCount: 100,
       profile: true,
-      handler: (percentage, message, ...args) => {
-        console.info(percentage, message, ...args)
+      handler: (percentage, message) => {
+        console.info(percentage, message)
       }
     }),
     new CleanWebpackPlugin({

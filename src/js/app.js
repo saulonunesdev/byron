@@ -4,6 +4,6 @@ import React from 'react'
 
 export default class Title extends React.Component {
   render () {
-    return React.createElement('h1', null, 'Hello From React')
+    return <h1>Hello From React</h1>
   }
 }

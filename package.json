@@ -12,7 +12,7 @@
     "autofix": "npm-run-all --parallel autofix:*",
     "test": "npm-run-all test:lint",
     "test:lint": "npm-run-all --parallel test:lint:*",
-    "test:lint:js": "eslint . --config=.eslintrc.json && jest -c jest.config.js --silent",
+    "test:lint:js": "eslint . --config=.eslintrc.json && jest -c jest.config.js --silent --passWithNoTests",
     "test:lint:md": "remark -qf . && eslint . --ext md --config=.eslintrc.json",
     "test:lint:css": "stylelint \"src/styles/**/*.css\" --allow-empty-input",
     "test:lint:html": "eslint . --ext html --config=.eslintrc.json",

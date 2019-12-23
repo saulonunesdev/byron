@@ -9,7 +9,7 @@
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
     '^.+\\.css$': '<rootDir>/configs/cssTransform.js',
-    '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '<rootDir>/configs/fileTransform.js'
+    '^(?!.*\\.(js|jsx|ts|tsx|css|json|ico)$)': '<rootDir>/configs/fileTransform.js'
   },
   transformIgnorePatterns: [
     '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',

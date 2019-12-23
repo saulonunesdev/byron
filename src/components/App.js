@@ -3,8 +3,8 @@
 import React from 'react'
 import { hot } from 'react-hot-loader/root'
 import Svg from 'react-inlinesvg'
-import logo from '../assets/images/svg/logo.svg'
-import '../styles/app.css'
+import logo from '../assets/svg/logo.svg'
+import '../styles/App.css'
 
 function App () {
   return (

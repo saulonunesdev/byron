@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { render } from 'react-dom'
-import App from './app'
+import App from './App'
 import '../styles/index.css'
-import '../assets/svg/favicon.ico'
+import '../assets/svg/logo.svg'
 
 render(<App />, document.getElementById('root'))

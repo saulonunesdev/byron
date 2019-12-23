@@ -13,8 +13,7 @@ const devMode = process.env.NODE_ENV !== 'production'
 module.exports = {
   mode: devMode ? 'development' : 'production',
   entry: {
-    index: path.join(__dirname, 'src', 'js', 'index.js'),
-    other: path.join(__dirname, 'src', 'js', 'other.js')
+    index: path.join(__dirname, 'src', 'components', 'index.js')
   },
   output: {
     filename: '[name].bundle.js',
@@ -95,18 +94,13 @@ module.exports = {
       chunkFilename: '[id].css'
     }),
     new StylelintPlugin({
-      context: 'src/css',
+      context: 'src/styles',
       files: '*.css'
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.join(__dirname, 'src', 'views', 'index.html'),
+      template: path.join(__dirname, 'src', 'pages', 'index.html'),
       chunks: ['index', 'styles']
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'other.html',
-      template: path.join(__dirname, 'src', 'views', 'other.html'),
-      chunks: ['other', 'styles']
     }),
     new BrowserSyncPlugin(
       {

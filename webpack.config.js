@@ -69,13 +69,13 @@ module.exports = {
         loader: 'svg-inline-loader'
       },
       {
-        test: /\.js$/,
+        test: /\.js$|\.jsx$/,
         exclude: /node_modules/,
         enforce: 'pre',
         loaders: ['eslint-loader', 'standard-loader']
       },
       {
-        test: /\.js$/,
+        test: /\.js$|\.jsx$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       }

@@ -54,6 +54,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
+          { loader: 'css-hot-loader', options: { sourceMap: devMode } },
           {
             loader: MiniCssExtractPlugin.loader
           },

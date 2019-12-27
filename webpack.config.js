@@ -13,11 +13,12 @@ const devMode = process.env.NODE_ENV !== 'production'
 module.exports = {
   mode: devMode ? 'development' : 'production',
   entry: {
-    index: path.join(__dirname, 'src', 'components', 'index.js')
+    index: path.join(__dirname, 'src', 'index.js')
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   devtool: devMode ? 'inline-source-map' : false,
   stats: {
@@ -28,7 +29,8 @@ module.exports = {
   },
   devServer: {
     contentBase: './dist',
-    publicPath: '/static/',
+    historyApiFallback: true,
+    // publicPath: '/static/',
     hot: devMode
   },
   optimization: {
@@ -104,16 +106,17 @@ module.exports = {
       context: 'src/styles',
       files: '*.css'
     }),
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'GIT_API']),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.join(__dirname, 'src', 'pages', 'index.html'),
+      template: path.join(__dirname, 'src', 'index.html'),
       chunks: ['index', 'styles']
     }),
     new BrowserSyncPlugin(
       {
         host: '192.168.15.11',
         port: 3000,
-        proxy: 'http://localhost:8080/static/'
+        proxy: 'http://localhost:8080/'
       },
       {
         reload: false

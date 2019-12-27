@@ -21,9 +21,11 @@
   "author": "Saulo Nunes",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.19.0",
     "dotenv": "^8.2.0",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",

@@ -12,7 +12,7 @@ class MainRoutes extends Component {
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
             <Route exact path='/' component={App} />
-            <Route path='/git' component={Git} />
+            <Route exact path='/git' component={Git} />
           </Switch>
         </Suspense>
       </Router>

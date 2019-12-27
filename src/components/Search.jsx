@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 class Search extends Component {
   render () {
     return (
       <div className='search'>
+        <Link to='/'>Voltar</Link>
         <input
           type='search'
           placeholder='Digite o nome do usuário no github'

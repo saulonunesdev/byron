@@ -16,7 +16,7 @@ module.exports = {
     index: path.join(__dirname, 'src', 'index.js')
   },
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].[hash].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
@@ -30,7 +30,6 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     historyApiFallback: true,
-    // publicPath: '/static/',
     hot: devMode
   },
   optimization: {
@@ -66,7 +65,7 @@ module.exports = {
       },
       {
         test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
-        loader: 'file-loader?name=[name].[ext]'
+        loader: 'file-loader?name=[name].[hash].[ext]'
       },
       {
         test: /\.svg$/,

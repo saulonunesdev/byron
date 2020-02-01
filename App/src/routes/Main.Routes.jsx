@@ -2,8 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import React, { Suspense, lazy, Component } from 'react'
 import { hot } from 'react-hot-loader/root'
 
-const App = lazy(() => import('../pages/App'))
-const Git = lazy(() => import('../pages/Git'))
+const Home = lazy(() => import('../pages/Home'))
 
 class MainRoutes extends Component {
   render () {
@@ -11,8 +10,7 @@ class MainRoutes extends Component {
       <Router>
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
-            <Route exact path='/' component={App} />
-            <Route exact path='/git' component={Git} />
+            <Route exact path='/' component={Home} />
           </Switch>
         </Suspense>
       </Router>

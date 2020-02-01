@@ -80,6 +80,9 @@ function getEbayProducts (term, callback) {
 
 server.get('/ebay/:term', function (req, res, next) {
   getEbayProducts(req.params.term, (result) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Methods', '*')
+    res.header('Access-Control-Allow-Headers', '*')
     res.send(result)
     next()
   })

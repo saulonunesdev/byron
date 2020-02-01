@@ -4,7 +4,7 @@
   "description": "A ReactJs BoilerPlate",
   "scripts": {
     "start": "webpack-dev-server",
-    "wbundle": "webpack",
+    "bundle": "webpack",
     "autofix:html": "eslint . --ext html --fix --config=.eslintrc.json",
     "autofix:md": "eslint . --ext md --fix --config=.eslintrc.json && remark . -qfo --rc-path=.remarkrc",
     "autofix:css": "stylelint \"src/styles/**/*.css\" --fix --allow-empty-input",
@@ -61,7 +61,6 @@
     "eslint-plugin-standard": "^4.0.1",
     "file-loader": "^5.0.2",
     "html-webpack-plugin": "^3.2.0",
-    "husky": "^3.1.0",
     "jest": "^24.9.0",
     "lint-staged": "^9.5.0",
     "lockfile-lint": "^3.0.4",
@@ -86,34 +85,6 @@
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
-  },
-  "lint-staged": {
-    "*.{js}": [
-      "npm run test:lint:js",
-      "git add"
-    ],
-    "*.{jsx}": [
-      "npm run test:lint:jsx && npm run test:unit:jsx",
-      "git add"
-    ],
-    "*.{md}": [
-      "npm run test:lint:md",
-      "git add"
-    ],
-    "*.{html}": [
-      "npm run test:lint:html",
-      "git add"
-    ],
-    "*.{css}": [
-      "npm run test:lint:css",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm run test"
-    }
   },
   "standard": {
     "ignore": [

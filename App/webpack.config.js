@@ -105,7 +105,7 @@ module.exports = {
       context: 'src/styles',
       files: '*.css'
     }),
-    new webpack.EnvironmentPlugin(['NODE_ENV', 'GIT_API']),
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'EBAY_API']),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.join(__dirname, 'src', 'index.html'),

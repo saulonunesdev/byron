@@ -12,12 +12,8 @@ npm install     #Install Dependencies
 npm start       #Starts WebPack DevServer With HotReload and BrowserSync
 npm test        #Tests Everything
 npm run autofix #Fix Everything (Remark Not Working 100%)
-npm run wbundle #Generate WebPack Bundle
+npm run bundle  #Generate WebPack Bundle
 ```
-
-## Wiki
-
-_To be Created_
 
 [license-image]: https://img.shields.io/github/license/SauloNunes/reactjs-boilerplate
 

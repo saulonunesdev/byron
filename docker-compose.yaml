@@ -1,0 +1,29 @@
+version: '3.6'
+
+services:
+  ebay-api:
+    image: ebayapi:latest
+    environment:
+      EBAY_APP_ID_SBOX: ''
+      EBAY_APP_SECRET_SBOX: ''
+      EBAY_APP_ID: ''
+      EBAY_APP_SECRET: ''
+      EBAY_MODE: 'PRODUCTION'
+      EBAY_BASE_URL_SBOX: 'https://api.sandbox.ebay.com/buy/browse/v1/item_summary/'
+      EBAY_BASE_URL: 'https://api.ebay.com/buy/browse/v1/item_summary/'
+      EBAY_TOKEN_SBOX_URL: 'https://api.sandbox.ebay.com/identity/v1/oauth2/token'
+      EBAY_TOKEN_URL: 'https://api.ebay.com/identity/v1/oauth2/token'
+      EBAY_RESULT_COUNT: 3
+      SERVER_PORT: 3010
+    ports:
+      - 3010:3010
+  byron-app:
+    image: byronapp:latest
+    environment:
+      NODE_ENV: 'production'
+      AFROTITE_API: 'afrodite-api'
+    ports:
+      - 80:80
+    command: ['nginx', '-g', 'daemon off;']
+    depends_on:
+      - ebay-api

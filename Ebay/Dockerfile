@@ -23,8 +23,6 @@ RUN apk add --no-cache --virtual .gyp \
         g++ \
         && npm install
 
-# RUN npm install
-
 EXPOSE 3010
 
 CMD [ "node", "index.js" ]

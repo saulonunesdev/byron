@@ -1,0 +1,16 @@
+{
+  "name": "ebay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Saulo Nunes",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "request": "^2.88.0",
+    "restify": "^8.5.1"
+  }
+}

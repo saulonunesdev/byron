@@ -9,7 +9,9 @@ const base64Encode = (encodeData) => {
 }
 
 function getEbayToken (callback) {
-  const encodedStr = base64Encode(process.env.EBAY_APP_ID + ':' + process.env.EBAY_APP_SECRET)
+  const appId = process.env.EBAY_MODE === 'SANDBOX' ? process.env.EBAY_APP_ID_SBOX : process.env.EBAY_APP_ID
+  const appSecret = process.env.EBAY_MODE === 'SANDBOX' ? process.env.EBAY_APP_SECRET_SBOX : process.env.EBAY_APP_SECRET
+  const encodedStr = base64Encode(appId + ':' + appSecret)
   const _headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
     Authorization: 'Basic ' + encodedStr
@@ -32,24 +34,46 @@ function getEbayToken (callback) {
   })
 }
 
+function buildURL (term, _headers, callback) {
+  let _url = process.env.EBAY_MODE === 'SANDBOX' ? process.env.EBAY_BASE_URL_SBOX : process.env.EBAY_BASE_URL
+  _url += 'search?q=' + term
+  _url += '&limit=' + process.env.EBAY_RESULT_COUNT
+  _url += '&offset=0'
+  _url += '&sort=price'
+  _url += '&filter=deliveryCountry:BR'
+  const _CatUrl = _url + '&fieldgroups=ASPECT_REFINEMENTS'
+  request({ uri: _CatUrl, method: 'GET', headers: _headers, json: true }, function (
+    error,
+    response,
+    data
+  ) {
+    if (error) {
+      return callback(_url)
+    } else {
+      _url += '&category_ids=' + data.refinement.dominantCategoryId
+      return callback(_url)
+    }
+  })
+}
+
 function getEbayProducts (term, callback) {
   getEbayToken((oauth) => {
     const _headers = {
-      Authorization: 'Bearer ' + oauth
+      Authorization: 'Bearer ' + oauth,
+      'X-EBAY-C-ENDUSERCTX': 'contextualLocation=country=BR'
     }
-    let _url = process.env.EBAY_MODE === 'SANDBOX' ? process.env.EBAY_BASE_URL_SBOX : process.env.EBAY_BASE_URL
-    _url += 'search?q=' + term
-    _url += '&limit=' + process.env.EBAY_RESULT_COUNT
-    request({ uri: _url, method: 'GET', headers: _headers, json: true }, function (
-      error,
-      response,
-      data
-    ) {
-      if (error) {
-        callback(error)
-      } else {
-        return callback(data)
-      }
+    buildURL(term, _headers, (_url) => {
+      request({ uri: _url, method: 'GET', headers: _headers, json: true }, function (
+        error,
+        response,
+        data
+      ) {
+        if (error) {
+          callback(error)
+        } else {
+          return callback(data)
+        }
+      })
     })
   })
 }

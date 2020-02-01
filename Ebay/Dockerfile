@@ -21,8 +21,9 @@ RUN apk add --no-cache --virtual .gyp \
         python \
         make \
         g++ \
-        && npm install \
-        && apk del .gyp
+        && npm install
+
+# RUN npm install
 
 EXPOSE 3010
 

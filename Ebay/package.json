@@ -1,7 +1,7 @@
 {
   "name": "ebay",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Middleware to search Ebay products via Query Api",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

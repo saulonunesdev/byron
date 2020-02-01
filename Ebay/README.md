@@ -1,8 +1,12 @@
 # Server
 
+A Middleware to search Ebay products via Query Api
+
 ```sh
 npm install
 ```
+
+then GET **<http://localhost:3010/ebay/TERM>**
 
 ## How to Run
 

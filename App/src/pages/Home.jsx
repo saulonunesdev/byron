@@ -22,6 +22,7 @@ class Home extends Component {
   }
 
   handleGetProducts (e) {
+    e.preventDefault()
     this.setState({
       isFetching: true,
       products: []
@@ -34,6 +35,7 @@ class Home extends Component {
           arr.push(response.data.itemSummaries[i])
         }
 
+        console.log(response.data.itemSummaries[0])
         this.setState({
           products: arr
         })

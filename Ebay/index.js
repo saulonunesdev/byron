@@ -47,7 +47,7 @@ function buildURL (term, _headers, callback) {
     response,
     data
   ) {
-    if (error) {
+    if (error || data.errors) {
       return callback(_url)
     } else {
       _url += '&category_ids=' + data.refinement.dominantCategoryId
@@ -69,7 +69,7 @@ function getEbayProducts (term, callback) {
         data
       ) {
         if (error) {
-          callback(error)
+          return callback(error)
         } else {
           return callback(data)
         }

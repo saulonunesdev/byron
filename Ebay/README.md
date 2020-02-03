@@ -14,7 +14,7 @@ then GET **<http://localhost:3010/ebay/TERM>**
 
 Create a .Env File
 
-```js
+```docker
 EBAY_APP_ID = 'YOURAPPID'
 EBAY_APP_SECRET = 'YOURAPPSECRET'
 EBAY_APP_ID_SBOX = 'YOURAPPID'

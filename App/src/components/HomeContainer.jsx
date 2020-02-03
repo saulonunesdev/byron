@@ -6,13 +6,22 @@ class HomeContainer extends Component {
   render () {
     return (
       <div>
-        <form onSubmit={this.props.onHandleGetProducts}>
-          <fieldset disabled={this.props.isFetching} className='SearchTerm'>
-            <input type='text' value={this.props.term} onChange={this.props.onHandleChangeTerm} placeholder='TERMO DE CONSULTA' />
-            <input type='submit' value='Consultar' />
-          </fieldset>
-        </form>
+        <div className='SearchTerm'>
+          <form onSubmit={this.props.onHandleGetProducts}>
+            <fieldset disabled={this.props.isFetching}>
+              <input type='text' value={this.props.term} onChange={this.props.onHandleChangeTerm} placeholder='TERMO DE CONSULTA' />
+              <input type='submit' value='Consultar' />
+            </fieldset>
+          </form>
+          <form onSubmit={this.props.onHandleSendEmail}>
+            <fieldset disabled={this.props.isFetching}>
+              <input type='text' value={this.props.emails} onChange={this.props.onHandleChangeEmails} placeholder='EMAILS' />
+              <input type='submit' value='Enviar Email' />
+            </fieldset>
+          </form>
+        </div>
         {this.props.isFetching && <div>Searching...</div>}
+        <div>{this.props.message}</div>
         <ul className='ResultsBox'>
           {this.props.products.map((item, index) => (
             <li key={index} className='ResultItem'>
@@ -50,10 +59,14 @@ class HomeContainer extends Component {
 
 HomeContainer.propTypes = {
   term: PropTypes.string.isRequired,
+  emails: PropTypes.string.isRequired,
+  message: PropTypes.string,
   isFetching: PropTypes.bool,
   products: PropTypes.array,
   onHandleGetProducts: PropTypes.func.isRequired,
-  onHandleChangeTerm: PropTypes.func.isRequired
+  onHandleChangeTerm: PropTypes.func.isRequired,
+  onHandleSendEmail: PropTypes.func.isRequired,
+  onHandleChangeEmails: PropTypes.func.isRequired
 }
 
 export default HomeContainer

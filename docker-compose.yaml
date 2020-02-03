@@ -17,13 +17,28 @@ services:
       SERVER_PORT: 3010
     ports:
       - 3010:3010
+  email-api:
+    image: emailapi:latest
+    environment:
+      SERVER_PORT: 3009
+      EMAIL_SERVER: 'smtp.ethereal.email'
+      EMAIL_USER: 'abigayle92@ethereal.email'
+      EMAIL_PASS: '9CvWVcq9dQ964HsquN'
+      EMAIL_PORT: 587
+      EMAIL_SECURE: 'false'
+      EMAIL_ORIGIN: 'Byron App <byron@example.com>'
+      EMAIL_SUBJECT: 'Byron Term: '
+    ports:
+      - 3009:3009
   byron-app:
     image: byronapp:latest
     environment:
       NODE_ENV: 'production'
-      AFROTITE_API: 'afrodite-api'
+      EBAY_API: 'ebay-api'
+      EMAIL_API: 'email-api'
     ports:
       - 80:80
     command: ['nginx', '-g', 'daemon off;']
     depends_on:
       - ebay-api
+      - email-api

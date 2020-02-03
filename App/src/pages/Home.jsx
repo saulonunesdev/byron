@@ -28,7 +28,7 @@ class Home extends Component {
     })
 
     var items = this.state.products
-    var _html = '<div style="margin-top: 15px;width: 100%;height: auto;display: flex;flex-direction: column;justify-content: flex-start;align-items: center;">'
+    var _html = '<div>'
     for (let i = 0; i < items.length; i++) {
       _html += '<div style="width: 90%;height: auto;margin: 5px;padding: 5px;background-color: rgb(246, 246, 246);border: 2px solid #bdbdbd;border-radius: 10px;display: flex;flex-direction: row;justify-content: space-between;"><img src="' + items[i].image.imageUrl + '"style="width: 225px;height: 225px;border-radius: 3px;border: 2px solid #ddd;"></img>'
       _html += '<div style="padding-left: 10px;padding-top: 10px;width: 100%;display: flex;flex-direction: column;justify-content: space-between;font-family: "Helvetica Neue", Helvetica, Arial, Roboto, sans-serif;box-sizing: inherit;align-items: flex-start;"><div style="font-size: 16px;font-weight: 400;line-height: 1.3;list-style: none;color: rgb(6, 84, 186);">' + items[i].title + '</div>'

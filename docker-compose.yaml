@@ -42,3 +42,14 @@ services:
     depends_on:
       - ebay-api
       - email-api
+  server-byron:
+    image: serverbyron:latest
+    environment:
+      EBAY_API: 'ebay-api'
+      EMAIL_API: 'email-api'
+      SERVER_MIN: 1
+    ports:
+      - 3008:3008
+    depends_on:
+      - ebay-api
+      - email-api

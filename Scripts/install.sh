@@ -8,5 +8,8 @@ npm install --prefix Ebay/
 echo "Installing Node Modules on EmailApi"
 rm -rf Email/node_modules
 npm install --prefix Email/
+echo "Installing Node Modules on Server Byron"
+rm -rf Server/node_modules
+npm install --prefix Server/
 
 Scripts/build.sh

@@ -45,11 +45,10 @@ services:
   server-byron:
     image: serverbyron:latest
     environment:
-      EBAY_API: 'ebay-api'
-      EMAIL_API: 'email-api'
+      EBAY_API: 'http://ebay-api:3010'
+      EMAIL_API: 'http://email-api:3009'
       SERVER_MIN: 1
-    ports:
-      - 3008:3008
+    command: ['node', 'index.js']
     depends_on:
       - ebay-api
       - email-api

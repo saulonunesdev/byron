@@ -2,8 +2,8 @@ const axios = require('axios')
 require('dotenv').config()
 
 const arrTerms = [
-  { term: 'iphone', email: 'saulo@paralink.com.br', timebox: 30000, lastMail: Date.now(), html: '' },
-  { term: 'motog5', email: 'saulo@paralink.com.br', timebox: 20000, lastMail: Date.now(), html: '' }
+  { term: 'iphone', email: 'saulo@paralink.com.br', timebox: 60000, lastMail: Date.now(), html: '' },
+  { term: 'motog5', email: 'saulo@paralink.com.br', timebox: 120000, lastMail: Date.now(), html: '' }
 ]
 
 const base64Encode = (encodeData) => {
@@ -27,10 +27,8 @@ function GetEbayResults (_url) {
 
 async function main () {
   for (let i = 0; i < arrTerms.length; i++) {
-    console.log('begin', arrTerms[i].term)
     const diffTime = Date.now() - arrTerms[i].lastMail
     if (diffTime > arrTerms[i].timebox) {
-      console.log('entered ' + arrTerms[i].term + ' time ' + arrTerms[i].timebox)
       GetEbayResults(process.env.EBAY_API + '/ebay/' + arrTerms[i].term)
         .then((response) => {
           arrTerms[i].lastMail = Date.now()
@@ -52,7 +50,6 @@ async function main () {
           console.log(error)
         })
         .finally(() => {
-          console.log('sending mail ' + arrTerms[i].term + ' time ' + arrTerms[i].timebox)
           SendEmail(i)
             .then((response) => {
               console.log(response.data)
@@ -69,8 +66,7 @@ async function main () {
 }
 
 function start () {
-  console.log('start')
-  setInterval(async () => main(), parseInt(process.env.SERVER_MIN * 10001))
+  setInterval(async () => main(), parseInt(process.env.SERVER_MIN * 60001))
 }
 
 start()

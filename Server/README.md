@@ -24,5 +24,5 @@ then run **npm start**
 
 ```sh
 docker build -t serverbyron .
-docker run -itd --name=serverbyronc -p 3008:3008 serverbyron
+docker run -it --name=serverbyronc serverbyron
 ```

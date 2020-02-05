@@ -16,9 +16,12 @@ class HomeContainer extends Component {
           <form onSubmit={this.props.onHandleSendEmail}>
             <fieldset disabled={this.props.isFetching}>
               <input type='text' value={this.props.emails} onChange={this.props.onHandleChangeEmails} placeholder='EMAILS' />
+              <input type='text' value={this.props.timebox} onChange={this.props.onHandleChangeTimebox} placeholder='tempo ms' />
               <input type='submit' value='Enviar Email' />
             </fieldset>
           </form>
+          <button onClick={this.props.onHandleSaveSearch}>Salvar</button>
+          <button onClick={this.props.onHandleNavSearches}>Ir Consultas</button>
         </div>
         {this.props.isFetching && <div>Searching...</div>}
         <div>{this.props.message}</div>
@@ -60,13 +63,17 @@ class HomeContainer extends Component {
 HomeContainer.propTypes = {
   term: PropTypes.string.isRequired,
   emails: PropTypes.string.isRequired,
+  timebox: PropTypes.string.isRequired,
   message: PropTypes.string,
   isFetching: PropTypes.bool,
   products: PropTypes.array,
   onHandleGetProducts: PropTypes.func.isRequired,
   onHandleChangeTerm: PropTypes.func.isRequired,
   onHandleSendEmail: PropTypes.func.isRequired,
-  onHandleChangeEmails: PropTypes.func.isRequired
+  onHandleChangeEmails: PropTypes.func.isRequired,
+  onHandleNavSearches: PropTypes.func.isRequired,
+  onHandleChangeTimebox: PropTypes.func.isRequired,
+  onHandleSaveSearch: PropTypes.func.isRequired
 }
 
 export default HomeContainer

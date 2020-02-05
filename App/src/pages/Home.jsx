@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { GetProducts } from '../api/ebayAPI'
 import { SendEmail } from '../api/emailAPI'
 import HomeContainer from '../components/HomeContainer'
+import { saveSearch } from '../api/mongoAPI'
 
 class Home extends Component {
   constructor () {
@@ -11,13 +13,34 @@ class Home extends Component {
       message: '',
       term: '',
       emails: '',
+      timebox: '',
       products: []
     }
 
     this.handleGetProducts = this.handleGetProducts.bind(this)
     this.handleChangeTerm = this.handleChangeTerm.bind(this)
+    this.handleChangeTimebox = this.handleChangeTimebox.bind(this)
     this.handleSendEmail = this.handleSendEmail.bind(this)
     this.handleChangeEmails = this.handleChangeEmails.bind(this)
+    this.handleNavSearches = this.handleNavSearches.bind(this)
+    this.handleSaveSearch = this.handleSaveSearch.bind(this)
+  }
+
+  handleSaveSearch (e) {
+    saveSearch(this.state.term, this.state.emails, this.state.timebox)
+      .then((response) => {
+        console.log('resp', response)
+      })
+      .catch((error) => {
+        console.log('err', error)
+      })
+      .finally(() => {
+        this.handleNavSearches()
+      })
+  }
+
+  handleNavSearches (e) {
+    this.props.history.push('/searches')
   }
 
   handleSendEmail (e) {
@@ -56,6 +79,12 @@ class Home extends Component {
   handleChangeTerm (e) {
     this.setState({
       term: e.target.value
+    })
+  }
+
+  handleChangeTimebox (e) {
+    this.setState({
+      timebox: e.target.value
     })
   }
 
@@ -99,9 +128,18 @@ class Home extends Component {
         onHandleChangeTerm={this.handleChangeTerm}
         onHandleSendEmail={this.handleSendEmail}
         onHandleChangeEmails={this.handleChangeEmails}
+        onHandleNavSearches={this.handleNavSearches}
+        onHandleChangeTimebox={this.handleChangeTimebox}
+        onHandleSaveSearch={this.handleSaveSearch}
       />
     )
   }
+}
+
+Home.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func
+  })
 }
 
 export default Home

@@ -10,9 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "mongoose": "^5.8.3",
     "restify": "^8.5.1",
-    "dotenv": "^8.2.0"
+    "restify-cors-middleware": "^1.1.1"
   },
   "devDependencies": {
     "@types/mongoose": "^5.5.36",

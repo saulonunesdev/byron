@@ -1,4 +1,5 @@
 import * as restify from 'restify'
+import * as corsMiddleware from 'restify-cors-middleware'
 import * as mongoose from 'mongoose'
 import { Router } from '../routes/router'
 require('dotenv').config()
@@ -22,7 +23,18 @@ export class Server {
           version: '1.0.0'
         })
 
+        const cors = corsMiddleware({
+          preflightMaxAge: 5,
+          origins: ['*'],
+          allowHeaders: ['*'],
+          exposeHeaders: ['*']
+        })
+
         this.monitor.use(restify.plugins.queryParser())
+        this.monitor.use(restify.plugins.bodyParser())
+
+        this.monitor.pre(cors.preflight)
+        this.monitor.use(cors.actual)
         this.monitor.use(restify.plugins.bodyParser())
 
         routes.forEach(element => {

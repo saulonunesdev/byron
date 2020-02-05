@@ -4,9 +4,9 @@ import { SavedSearch } from '../classes/saved-search.class'
 
 class SearchesRouter extends Router {
   applyRoutes(monitor: restify.Server) {
-    monitor.get('/searches', (req, res, next) => {
+    monitor.get('/searches', (req, resp, next) => {
       SavedSearch.find()
-        .then(this.render(res, next))
+        .then(this.render(resp, next))
         .catch(next)
     })
 

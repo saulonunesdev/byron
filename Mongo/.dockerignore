@@ -1,0 +1,8 @@
+node_modules
+src
+tsconfig.json
+*.env
+*.log
+Dockerfile
+README.md
+.git

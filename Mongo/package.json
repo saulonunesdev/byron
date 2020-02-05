@@ -1,0 +1,21 @@
+{
+  "name": "mongo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bundle": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.8.3",
+    "restify": "^8.5.1",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "@types/mongoose": "^5.5.36",
+    "@types/restify": "^8.4.2"
+  }
+}

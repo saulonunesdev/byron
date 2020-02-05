@@ -20,7 +20,6 @@ services:
   email-api:
     image: emailapi:latest
     environment:
-      SERVER_PORT: 3009
       EMAIL_SERVER: 'smtp.ethereal.email'
       EMAIL_USER: 'abigayle92@ethereal.email'
       EMAIL_PASS: '9CvWVcq9dQ964HsquN'
@@ -30,6 +29,14 @@ services:
       EMAIL_SUBJECT: 'Byron Term: '
     ports:
       - 3009:3009
+  mongo-api:
+    image: mongoapi:latest
+    environment:
+      SERVER_PORT: 3008
+      DB_URL: 'mongodb://localhost/monitor'
+    ports:
+      - 3008:3008
+    command: ['node', 'dist/main.js']
   byron-app:
     image: byronapp:latest
     environment:
@@ -47,8 +54,10 @@ services:
     environment:
       EBAY_API: 'http://ebay-api:3010'
       EMAIL_API: 'http://email-api:3009'
+      MONGO_API: 'http://mongo-api:3008'
       SERVER_MIN: 1
     command: ['node', 'index.js']
     depends_on:
       - ebay-api
       - email-api
+      - mongo-api

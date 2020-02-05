@@ -11,5 +11,8 @@ npm install --prefix Email/
 echo "Installing Node Modules on Server Byron"
 rm -rf Server/node_modules
 npm install --prefix Server/
+echo "Installing Node Modules on Mongo Api"
+rm -rf Mongo/node_modules
+npm install --prefix Mongo/
 
 Scripts/build.sh

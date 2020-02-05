@@ -16,7 +16,8 @@ const saveSearch = function (_term, _email, _timebox) {
   const data = {
     term: _term,
     email: _email,
-    timebox: _timebox
+    timebox: _timebox,
+    lastMailTimestamp: Date.now()
   }
   return axios.post(process.env.MONGO_API + '/searches', data)
 }

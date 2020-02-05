@@ -16,6 +16,7 @@ class SearchesContainer extends Component {
               <input value={item.term} onChange={this.props.onHandleChangeTerm} />
               <input value={item.email} onChange={this.props.onHandleChangeEmail} />
               <input value={item.timebox} onChange={this.props.onHandleChangeTimebox} />
+              <label>{item.lastMailTimestamp}</label>
               <button onClick={this.props.onHandleUpdateSearch}>Gravar</button>
               <button onClick={this.props.onHandleDeleteSearch}>Deletar</button>
             </li>

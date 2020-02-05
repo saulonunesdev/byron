@@ -20,6 +20,7 @@ services:
   email-api:
     image: emailapi:latest
     environment:
+      SERVER_PORT: 3009
       EMAIL_SERVER: 'smtp.ethereal.email'
       EMAIL_USER: 'abigayle92@ethereal.email'
       EMAIL_PASS: '9CvWVcq9dQ964HsquN'
@@ -43,12 +44,14 @@ services:
       NODE_ENV: 'production'
       EBAY_API: 'ebay-api'
       EMAIL_API: 'email-api'
+      MONGO_API: 'mongo-api'
     ports:
       - 80:80
     command: ['nginx', '-g', 'daemon off;']
     depends_on:
       - ebay-api
       - email-api
+      - mongo-api
   server-byron:
     image: serverbyron:latest
     environment:
